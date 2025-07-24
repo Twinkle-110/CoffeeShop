@@ -64,7 +64,8 @@ public class LoginController implements Initializable {
             if (result.next()) {
                 // Verify password (consider using hashed passwords in production)
                 String storedPassword = result.getString("user_password");
-                if (storedPassword.equals(password)) {
+                String hashedInput = hashPassword(password);
+                if (storedPassword.equals(hashedInput)) {
                     // Retrieve and store the user's id for later use (for example, in MenuController)
                     LoginController.userId = result.getInt("id");
                     phoneNumber = result.getString("phone_number");
@@ -133,5 +134,22 @@ public class LoginController implements Initializable {
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+
+    // Hash password using SHA-256
+    private String hashPassword(String password) {
+        try {
+            java.security.MessageDigest md = java.security.MessageDigest.getInstance("SHA-256");
+            byte[] hash = md.digest(password.getBytes(java.nio.charset.StandardCharsets.UTF_8));
+            StringBuilder hexString = new StringBuilder();
+            for (byte b : hash) {
+                String hex = Integer.toHexString(0xff & b);
+                if (hex.length() == 1) hexString.append('0');
+                hexString.append(hex);
+            }
+            return hexString.toString();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }

@@ -48,21 +48,20 @@ public class PaymentController implements Initializable {
     }
 
     /**
-     * Fetches the updated amount for the current order and displays it.
+     * Fetches the updated amount for all unpaid orders for the current user and displays it.
      */
     private void fetchAndDisplayAmount() {
-        // Note: using "amount" column name as inserted in the orders table.
-        String sql = "SELECT total_amount FROM orders WHERE order_id = ?";
-
+        int userId = LoginController.userId;
+        String sql = "SELECT SUM(total_amount) AS total FROM orders WHERE user_id = ? AND (payment_status IS NULL OR payment_status = '')";
         try (PreparedStatement preparedStatement = dbConnection.prepareStatement(sql)) {
-            preparedStatement.setInt(1, orderId);
+            preparedStatement.setInt(1, userId);
             ResultSet resultSet = preparedStatement.executeQuery();
-
             if (resultSet.next()) {
-                totalAmount = resultSet.getInt("total_amount");
+                totalAmount = resultSet.getInt("total");
                 txtamount.setText("Total Amount: Rs. " + totalAmount);
             } else {
-                showErrorAlert("Error", "Order not found. Please try again.");
+                totalAmount = 0;
+                txtamount.setText("Total Amount: Rs. 0");
             }
         } catch (SQLException e) {
             showErrorAlert("Database Error", "Failed to fetch order details. Please try again later.");
@@ -71,33 +70,34 @@ public class PaymentController implements Initializable {
     }
 
     /**
-     * Confirms the payment and updates the database.
-     * This method is now renamed to "confirm" so that it matches the FXML onAction attribute.
+     * Confirms the payment and updates the database for all unpaid orders for the current user.
      */
     @FXML
     private void confirm() {
         String selectedPaymentMethod = Cboxpay.getValue();
-
         if (selectedPaymentMethod == null) {
             showErrorAlert("Invalid Input", "Please select a valid payment method.");
             return;
         }
-
-        String sql = "UPDATE orders SET payment_status = ? WHERE order_id = ?";
-
+        int userId = LoginController.userId;
+        String sql = "UPDATE orders SET payment_status = ? WHERE user_id = ? AND (payment_status IS NULL OR payment_status = '')";
         try (PreparedStatement preparedStatement = dbConnection.prepareStatement(sql)) {
             preparedStatement.setString(1, selectedPaymentMethod);
-            preparedStatement.setInt(2, orderId);
-
+            preparedStatement.setInt(2, userId);
             int rowsUpdated = preparedStatement.executeUpdate();
             if (rowsUpdated > 0) {
-                showInformationAlert("Payment Successful", "Your payment has been successfully recorded!");
-
+                showInformationAlert("Payment Successful", "Your payment has been successfully recorded for all orders!");
+                // Clear the cart after payment
+                try {
+                    MenuController.getCart().clear();
+                } catch (Exception e) {
+                    // Defensive: ignore if cart is not accessible
+                }
                 // Close the current stage (window)
                 Stage stage = (Stage) btnconfirm.getScene().getWindow();
                 stage.close();
             } else {
-                showErrorAlert("Payment Error", "Failed to update payment. Please try again.");
+                showErrorAlert("Payment Error", "No unpaid orders found to update.");
             }
         } catch (SQLException e) {
             showErrorAlert("Database Error", "An error occurred while processing your payment. Please try again later.");

@@ -13,11 +13,15 @@ import java.sql.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MenuController implements Initializable {
 
     public static int amount = 0;
     public static int orderId; // Store order ID for payment page
+    private static final List<CartItem> cart = new ArrayList<>();
+    public static List<CartItem> getCart() { return cart; }
     // Map to store coffee types and their respective prices
     private final Map<String, Integer> coffeePrices = new HashMap<>();
     @FXML
@@ -36,6 +40,8 @@ public class MenuController implements Initializable {
     private Button btnClear;
     @FXML
     private Button btnLogout;
+    // Add fx:id for new Add to Cart buttons
+    @FXML private Button btnAddCart1, btnAddCart2, btnAddCart3, btnAddCart4, btnAddCart5, btnAddCart6, btnAddCart7, btnAddCart8, btnAddCart9;
     private Connection dbConnection;
     private PreparedStatement preparedStatement;
 
@@ -194,5 +200,56 @@ public class MenuController implements Initializable {
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+
+    // Handler methods for Add to Cart buttons
+    @FXML
+    private void handleAddToCart1() { addCartItem("Cappuccino", 170); }
+    @FXML
+    private void handleAddToCart2() { addCartItem("Espresso", 120); }
+    @FXML
+    private void handleAddToCart3() { addCartItem("Mocha", 160); }
+    @FXML
+    private void handleAddToCart4() { addCartItem("Latte", 150); }
+    @FXML
+    private void handleAddToCart5() { addCartItem("Hot Chocolate", 130); }
+    @FXML
+    private void handleAddToCart6() { addCartItem("Americano", 135); }
+    @FXML
+    private void handleAddToCart7() { addCartItem("Caramel Frape", 220); }
+    @FXML
+    private void handleAddToCart8() { addCartItem("Flat White", 210); }
+    @FXML
+    private void handleAddToCart9() { addCartItem("Macchiato", 175); }
+
+    private void addCartItem(String name, int price) {
+        // Prompt for quantity
+        TextInputDialog dialog = new TextInputDialog("1");
+        dialog.setTitle("Add to Cart");
+        dialog.setHeaderText("Enter quantity for " + name + ":");
+        dialog.setContentText("Quantity:");
+        int quantity = 1;
+        try {
+            dialog.showAndWait();
+            String result = dialog.getResult();
+            if (result == null || !result.matches("\\d+") || Integer.parseInt(result) <= 0) {
+                showAlert("Invalid Quantity", "Please enter a valid positive number.", Alert.AlertType.ERROR);
+                return;
+            }
+            quantity = Integer.parseInt(result);
+        } catch (Exception e) {
+            showAlert("Error", "Invalid input.", Alert.AlertType.ERROR);
+            return;
+        }
+        // Merge if item exists
+        for (CartItem item : cart) {
+            if (item.getName().equals(name)) {
+                item.setQuantity(item.getQuantity() + quantity);
+                showAlert("Cart Updated", name + " quantity updated.", Alert.AlertType.INFORMATION);
+                return;
+            }
+        }
+        cart.add(new CartItem(name, price, quantity));
+        showAlert("Cart Updated", name + " added to cart.", Alert.AlertType.INFORMATION);
     }
 }

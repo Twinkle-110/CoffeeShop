@@ -60,13 +60,15 @@ public class SignupController implements Initializable {
             return;
         }
 
+        // Hash the password
+        String hashedPassword = hashPassword(password);
         // Insert user into the database
         String sql = "INSERT INTO users (phone_number, user_name, user_password) VALUES (?, ?, ?)";
         try {
             preparedStatement = dbConnection.prepareStatement(sql);
             preparedStatement.setString(1, phone);
             preparedStatement.setString(2, name);
-            preparedStatement.setString(3, password);
+            preparedStatement.setString(3, hashedPassword);
             preparedStatement.executeUpdate();
 
             showAlert("User Created", "Your account has been created! Please login to continue!", Alert.AlertType.INFORMATION);
@@ -125,5 +127,22 @@ public class SignupController implements Initializable {
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+
+    // Hash password using SHA-256
+    private String hashPassword(String password) {
+        try {
+            java.security.MessageDigest md = java.security.MessageDigest.getInstance("SHA-256");
+            byte[] hash = md.digest(password.getBytes(java.nio.charset.StandardCharsets.UTF_8));
+            StringBuilder hexString = new StringBuilder();
+            for (byte b : hash) {
+                String hex = Integer.toHexString(0xff & b);
+                if (hex.length() == 1) hexString.append('0');
+                hexString.append(hex);
+            }
+            return hexString.toString();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }
