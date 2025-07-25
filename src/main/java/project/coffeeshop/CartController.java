@@ -45,7 +45,7 @@ public class CartController implements Initializable {
 
     private void connectDB() {
         try {
-            dbConnection = DriverManager.getConnection("jdbc:mysql://localhost:3307/coffeeshop", "root", "toor");
+            dbConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/coffeeshop", "root", "toor");
         } catch (SQLException e) {
             showAlert("Database Error", "Could not connect to the database.", Alert.AlertType.ERROR);
         }

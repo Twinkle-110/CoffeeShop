@@ -59,7 +59,7 @@ public class AdminController implements Initializable {
 
     private Connection connectDB() {
         try {
-            return DriverManager.getConnection("jdbc:mysql://localhost:3307/coffeeshop", "root", "toor");
+            return DriverManager.getConnection("jdbc:mysql://localhost:3306/coffeeshop", "root", "toor");
         } catch (SQLException e) {
             System.out.println("Database Connection Error: " + e.getMessage());
             return null;

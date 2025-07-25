@@ -54,7 +54,7 @@ public class MenuController implements Initializable {
 
     private void connectDB() {
         try {
-            dbConnection = DriverManager.getConnection("jdbc:mysql://localhost:3307/coffeeshop", "root", "toor");
+            dbConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/coffeeshop", "root", "toor");
             System.out.println("Database successfully connected for Menu page!");
         } catch (SQLException e) {
             e.printStackTrace();

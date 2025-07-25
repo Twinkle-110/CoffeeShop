@@ -14,7 +14,7 @@ import java.util.ResourceBundle;
 
 public class PaymentController implements Initializable {
 
-    private static final String DB_URL = "jdbc:mysql://localhost:3307/coffeeshop";
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/coffeeshop";
     private static final String DB_USER = "root";
     private static final String DB_PASSWORD = "toor";
     // Variables to hold the current order ID and total amount
