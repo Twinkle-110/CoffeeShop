@@ -69,6 +69,9 @@ public class MenuController implements Initializable {
         coffeePrices.put("Latte (Rs. 150)", 150);
         coffeePrices.put("Hot Chocolate (Rs. 130)", 130);
         coffeePrices.put("Americano (Rs. 135)", 135);
+        coffeePrices.put("Caramel Frape (Rs. 220)", 220);
+        coffeePrices.put("Flat White (Rs. 210)", 210);
+        coffeePrices.put("Macchiato (Rs. 175)", 175);
     }
 
     @FXML
