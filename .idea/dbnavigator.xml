@@ -38,6 +38,7 @@
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
     <filter-actions connection-id="a947e10c-f1e6-4aad-8700-e4e4d14c9bfd" dataset="coffeeshop.users" active-filter-id="" />
+    <filter-actions connection-id="a947e10c-f1e6-4aad-8700-e4e4d14c9bfd" dataset="coffeeshop.menu" active-filter-id="" />
   </component>
   <component name="DBNavigator.Project.ObjectQuickFilterManager">
     <last-used-operator value="EQUAL" />
