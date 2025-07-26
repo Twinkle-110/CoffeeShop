@@ -8,10 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.coffeeshop.SignupController">
-
-   <!-- Left Image Section -->
-   <AnchorPane prefHeight="600.0" prefWidth="180.0" />
+<AnchorPane fx:id="btnlogin" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#login" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.coffeeshop.SignupController">
 
    <!-- Title -->
    <Label alignment="CENTER" layoutX="347.0" layoutY="68.0" prefHeight="17.0" prefWidth="107.0" text="Sign up">
@@ -22,7 +19,7 @@
 
    <Separator layoutX="225.0" layoutY="118.0" prefHeight="9.0" prefWidth="350.0" />
 
-   <Label layoutX="336.0" layoutY="161.0" prefHeight="20.0" prefWidth="129.0" text="Create your account">
+   <Label layoutX="336.0" layoutY="149.0" prefHeight="20.0" prefWidth="129.0" text="Create your account">
       <font>
          <Font size="14.0" />
       </font>
@@ -46,10 +43,9 @@
          <Font size="14.0" />
       </font>
    </Label>
-
-   <Button fx:id="btnlogin" layoutX="414.0" layoutY="537.0" mnemonicParsing="false" onAction="#login" prefHeight="31.0" prefWidth="67.0" style="-fx-background-color: inherit;" text="Log in">
+   <Button fx:id="btnlogin" layoutX="416.0" layoutY="537.0" mnemonicParsing="false" onAction="#login" style="-fx-background-color: white; -fx-text-fill: bold;" text="Log in" textFill="#986b4b">
       <font>
-         <Font name="System Bold" size="15.0" />
+         <Font name="System Bold" size="12.0" />
       </font>
    </Button>
 

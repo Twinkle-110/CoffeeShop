@@ -60,10 +60,10 @@ public class CartController implements Initializable {
         for (CartItem item : cart) {
             HBox row = new HBox(20);
             row.getChildren().addAll(
-                new Text(item.getName()),
-                new Text("Qty: " + item.getQuantity()),
-                new Text("Rs. " + item.getPrice()),
-                new Text("Total: Rs. " + item.getTotal())
+                    new Text(item.getName()),
+                    new Text("Qty: " + item.getQuantity()),
+                    new Text("Rs. " + item.getPrice()),
+                    new Text("Total: Rs. " + item.getTotal())
             );
             cartItemsBox.getChildren().add(row);
         }
@@ -103,7 +103,13 @@ public class CartController implements Initializable {
             }
             cart.clear();
             renderCartItems();
+            // Update button colors in MenuController
+            MenuController.updateMenuButtonColors();
             showAlert("Order Successful", "Your order(s) have been placed!", Alert.AlertType.INFORMATION);
+
+            // Navigate to Payment page
+            openWindow("/project/coffeeshop/Payment.fxml", "Payment");
+            closeCurrentWindow(btnOrder);
         } catch (SQLException e) {
             showAlert("Order Error", "Failed to place orders.", Alert.AlertType.ERROR);
             e.printStackTrace();
@@ -116,6 +122,8 @@ public class CartController implements Initializable {
             cart.clear();
         }
         renderCartItems();
+        // Update button colors in MenuController
+        MenuController.updateMenuButtonColors();
     }
 
     @FXML

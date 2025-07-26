@@ -42,14 +42,27 @@ public class MenuController implements Initializable {
     private Button btnLogout;
     // Add fx:id for new Add to Cart buttons
     @FXML private Button btnAddCart1, btnAddCart2, btnAddCart3, btnAddCart4, btnAddCart5, btnAddCart6, btnAddCart7, btnAddCart8, btnAddCart9;
+    @FXML private Button btnOrderNow, btnClearCart;
+
+    // Array to easily manage all cart buttons for color updates
+    private Button[] cartButtons;
+    private String[] coffeeNames = {"Espresso", "Cappuccino", "Latte", "Americano", "Chocolate Milk", "Caramel Frape", "Iced Coffee", "Flat White", "Macchiato"};
+    private static MenuController instance; // Static reference for updating colors from other controllers
     private Connection dbConnection;
     private PreparedStatement preparedStatement;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        instance = this; // Set static reference
         connectDB();
         populateCoffeePrices();
         CboxType.getItems().addAll(coffeePrices.keySet());
+        initializeCartButtons();
+        updateButtonColors();
+    }
+
+    private void initializeCartButtons() {
+        cartButtons = new Button[]{btnAddCart1, btnAddCart2, btnAddCart3, btnAddCart4, btnAddCart5, btnAddCart6, btnAddCart7, btnAddCart8, btnAddCart9};
     }
 
     private void connectDB() {
@@ -207,23 +220,23 @@ public class MenuController implements Initializable {
 
     // Handler methods for Add to Cart buttons
     @FXML
-    private void handleAddToCart1() { addCartItem("Cappuccino", 170); }
+    private void handleAddToCart1() { addCartItem("Espresso", 210); } // btnAddCart1 is Col 1, Row 0 = Espresso
     @FXML
-    private void handleAddToCart2() { addCartItem("Espresso", 120); }
+    private void handleAddToCart2() { addCartItem("Cappuccino", 150); } // btnAddCart2 is Col 0, Row 0 = Cappuccino
     @FXML
-    private void handleAddToCart3() { addCartItem("Mocha", 160); }
+    private void handleAddToCart3() { addCartItem("Latte", 200); } // btnAddCart3 is Col 0, Row 1 = Latte
     @FXML
-    private void handleAddToCart4() { addCartItem("Latte", 150); }
+    private void handleAddToCart4() { addCartItem("Americano", 175); } // btnAddCart4 is Col 0, Row 2 = Americano
     @FXML
-    private void handleAddToCart5() { addCartItem("Hot Chocolate", 130); }
+    private void handleAddToCart5() { addCartItem("Chocolate Milk", 175); } // btnAddCart5 is Col 2, Row 2 = Chocolate Milk
     @FXML
-    private void handleAddToCart6() { addCartItem("Americano", 135); }
+    private void handleAddToCart6() { addCartItem("Caramel Frape", 220); } // btnAddCart6 is Col 2, Row 1 = Caramel Frape
     @FXML
-    private void handleAddToCart7() { addCartItem("Caramel Frape", 220); }
+    private void handleAddToCart7() { addCartItem("Iced Coffee", 100); } // btnAddCart7 is Col 2, Row 0 = Iced Coffee
     @FXML
-    private void handleAddToCart8() { addCartItem("Flat White", 210); }
+    private void handleAddToCart8() { addCartItem("Flat White", 150); } // btnAddCart8 is Col 1, Row 2 = Flat White
     @FXML
-    private void handleAddToCart9() { addCartItem("Macchiato", 175); }
+    private void handleAddToCart9() { addCartItem("Macchiato", 120); } // btnAddCart9 is Col 1, Row 1 = Macchiato
 
     private void addCartItem(String name, int price) {
         // Prompt for quantity
@@ -249,10 +262,59 @@ public class MenuController implements Initializable {
             if (item.getName().equals(name)) {
                 item.setQuantity(item.getQuantity() + quantity);
                 showAlert("Cart Updated", name + " quantity updated.", Alert.AlertType.INFORMATION);
+                updateButtonColors(); // Update button colors after updating quantity
                 return;
             }
         }
         cart.add(new CartItem(name, price, quantity));
         showAlert("Cart Updated", name + " added to cart.", Alert.AlertType.INFORMATION);
+        updateButtonColors(); // Update button colors after adding to cart
+    }
+
+    // Method to update button colors based on cart contents
+    private void updateButtonColors() {
+        if (cartButtons == null) return;
+
+        for (int i = 0; i < cartButtons.length && i < coffeeNames.length; i++) {
+            boolean inCart = false;
+            for (CartItem item : cart) {
+                if (item.getName().equals(coffeeNames[i])) {
+                    inCart = true;
+                    break;
+                }
+            }
+
+            if (inCart) {
+                cartButtons[i].setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white;"); // Green for items in cart
+            } else {
+                cartButtons[i].setStyle("-fx-background-color: #f0f0f0; -fx-text-fill: black;"); // Default color
+            }
+        }
+    }
+
+    // Navigation method: Order Now button opens Cart page
+    @FXML
+    private void handleOrderNow() {
+        if (cart.isEmpty()) {
+            showAlert("Cart Empty", "Please add items to cart before proceeding to order.", Alert.AlertType.WARNING);
+            return;
+        }
+        openWindow("/project/coffeeshop/Cart.fxml", "Cart");
+        closeCurrentWindow(btnOrderNow);
+    }
+
+    // Clear cart functionality
+    @FXML
+    private void handleClearCart() {
+        cart.clear();
+        updateButtonColors();
+        showAlert("Cart Cleared", "All items have been removed from the cart.", Alert.AlertType.INFORMATION);
+    }
+
+    // Static method to update button colors from other controllers
+    public static void updateMenuButtonColors() {
+        if (instance != null) {
+            instance.updateButtonColors();
+        }
     }
 }

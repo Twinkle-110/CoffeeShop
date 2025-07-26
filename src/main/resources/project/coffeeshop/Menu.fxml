@@ -54,47 +54,47 @@
              <ImageView fitHeight="124.0" fitWidth="111.0" layoutX="10.0" layoutY="328.0" pickOnBounds="true" GridPane.columnIndex="2" GridPane.rowIndex="2">
                  <Image url="@img6.jpg" />
              </ImageView>
-         <Button fx:id="btnAddCart1" mnemonicParsing="false" text="Add to Cart" onAction="#handleAddToCart1" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+         <Button fx:id="btnAddCart1" mnemonicParsing="false" onAction="#handleAddToCart1" style="-fx-background-color: white; -fx-border-color: #986b4b;" text="Add to Cart" textFill="#986b4b" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
             <GridPane.margin>
                <Insets right="20.0" top="50.0" />
             </GridPane.margin>
          </Button>
-         <Button fx:id="btnAddCart2" layoutX="419.0" layoutY="101.0" mnemonicParsing="false" text="Add to Cart" onAction="#handleAddToCart2" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+         <Button fx:id="btnAddCart2" layoutX="419.0" layoutY="101.0" mnemonicParsing="false" onAction="#handleAddToCart2" style="-fx-background-color: whiite; -fx-border-color: #986b4b;" text="Add to Cart" textFill="#986b4b" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
             <GridPane.margin>
                <Insets right="20.0" top="50.0" />
             </GridPane.margin>
          </Button>
-         <Button fx:id="btnAddCart3" layoutX="10.0" layoutY="76.0" mnemonicParsing="false" text="Add to Cart" onAction="#handleAddToCart3" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+         <Button fx:id="btnAddCart3" layoutX="10.0" layoutY="76.0" mnemonicParsing="false" onAction="#handleAddToCart3" style="-fx-background-color: white; -fx-border-color: #986b4b;" text="Add to Cart" textFill="#986b4b" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
             <GridPane.margin>
                <Insets right="20.0" top="50.0" />
             </GridPane.margin>
          </Button>
-         <Button fx:id="btnAddCart4" layoutX="10.0" layoutY="239.0" mnemonicParsing="false" text="Add to Cart" onAction="#handleAddToCart4" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+         <Button fx:id="btnAddCart4" layoutX="10.0" layoutY="239.0" mnemonicParsing="false" onAction="#handleAddToCart4" style="-fx-background-color: white; -fx-border-color: #986b4b;" text="Add to Cart" textFill="#986b4b" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
             <GridPane.margin>
                <Insets right="20.0" top="50.0" />
             </GridPane.margin>
          </Button>
-         <Button fx:id="btnAddCart5" layoutX="10.0" layoutY="76.0" mnemonicParsing="false" text="Add to Cart" onAction="#handleAddToCart5" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+         <Button fx:id="btnAddCart5" layoutX="10.0" layoutY="76.0" mnemonicParsing="false" onAction="#handleAddToCart5" style="-fx-background-color: white; -fx-border-color: #986b4b;" text="Add to Cart" textFill="#986b4b" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
             <GridPane.margin>
                <Insets right="20.0" top="50.0" />
             </GridPane.margin>
          </Button>
-         <Button fx:id="btnAddCart6" layoutX="10.0" layoutY="76.0" mnemonicParsing="false" text="Add to Cart" onAction="#handleAddToCart6" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+         <Button fx:id="btnAddCart6" layoutX="10.0" layoutY="76.0" mnemonicParsing="false" onAction="#handleAddToCart6" style="-fx-background-color: white; -fx-border-color: #986b4b;" text="Add to Cart" textFill="#986b4b" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
             <GridPane.margin>
                <Insets right="20.0" top="50.0" />
             </GridPane.margin>
          </Button>
-         <Button fx:id="btnAddCart7" layoutX="10.0" layoutY="76.0" mnemonicParsing="false" text="Add to Cart" onAction="#handleAddToCart7" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+         <Button fx:id="btnAddCart7" layoutX="10.0" layoutY="76.0" mnemonicParsing="false" onAction="#handleAddToCart7" style="-fx-background-color: white; -fx-border-color: #986b4b;" text="Add to Cart" textFill="#986b4b" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
             <GridPane.margin>
                <Insets right="20.0" top="50.0" />
             </GridPane.margin>
          </Button>
-         <Button fx:id="btnAddCart8" layoutX="10.0" layoutY="76.0" mnemonicParsing="false" text="Add to Cart" onAction="#handleAddToCart8" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+         <Button fx:id="btnAddCart8" layoutX="10.0" layoutY="76.0" mnemonicParsing="false" onAction="#handleAddToCart8" style="-fx-background-color: white; -fx-border-color: #986b4b;" text="Add to Cart" textFill="#986b4b" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
             <GridPane.margin>
                <Insets right="20.0" top="50.0" />
             </GridPane.margin>
          </Button>
-         <Button fx:id="btnAddCart9" layoutX="10.0" layoutY="76.0" mnemonicParsing="false" text="Add to Cart" onAction="#handleAddToCart9" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+         <Button fx:id="btnAddCart9" layoutX="10.0" layoutY="76.0" mnemonicParsing="false" onAction="#handleAddToCart9" style="-fx-background-color: white; -fx-border-color: #986b4b;" text="Add to Cart" textFill="#986b4b" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
             <GridPane.margin>
                <Insets right="20.0" top="50.0" />
             </GridPane.margin>
@@ -206,6 +206,12 @@
          </Text>
          </GridPane>
     </HBox>
-   <Button layoutX="290.0" layoutY="553.0" mnemonicParsing="false" text="Order Now" />
-   <Button layoutX="418.0" layoutY="553.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="76.0" text="Clear" />
+   <Button fx:id="btnOrderNow" layoutX="248.0" layoutY="553.0" mnemonicParsing="false" onAction="#handleOrderNow" prefHeight="25.0" prefWidth="117.0" style="-fx-background-color: #986b4b;" text="Order Now" textFill="WHITE">
+      <font>
+         <Font size="14.0" />
+      </font></Button>
+   <Button fx:id="btnClearCart" layoutX="418.0" layoutY="553.0" mnemonicParsing="false" onAction="#handleClearCart" prefHeight="30.0" prefWidth="117.0" style="-fx-background-color: #986b4b;" text="Clear" textFill="WHITE">
+      <font>
+         <Font name="System Bold" size="14.0" />
+      </font></Button>
 </AnchorPane>
