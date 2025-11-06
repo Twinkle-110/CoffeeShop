@@ -1,0 +1,11 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="project.coffeeshop.Launcher" type="Application" factoryName="Application">
+    <option name="ALTERNATIVE_JRE_PATH" value="22" />
+    <option name="MAIN_CLASS_NAME" value="project.coffeeshop.Launcher" />
+    <module name="CoffeeShop" />
+    <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\openjfx-21.0.5_windows-x64_bin-sdk\javafx-sdk-21.0.5\lib&quot; --add-modules javafx.controls,javafx.fxml" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" build-on-make="true" name="CoffeeShop">
+    <output-path>$PROJECT_DIR$/out/artifacts/CoffeeShop_jar/artifacts/CoffeeShop</output-path>
+    <root id="root">
+      <element id="archive" name="CoffeeShop.jar">
+        <element id="module-output" name="CoffeeShop" />
+      </element>
+    </root>
+  </artifact>
+</component>

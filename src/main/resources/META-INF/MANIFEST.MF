@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Main-Class: project.coffeeshop.Launcher
+Class-Path: Maven: org.openjfx:javafx-fxml:22.0.1 Maven: org.openjfx:jav
+ afx-fxml:win:22.0.1 Maven: org.openjfx:javafx-media:22.0.1 Maven: org.o
+ penjfx:javafx-media:win:22.0.1 Maven: org.openjfx:javafx-swing:22.0.1 M
+ aven: org.openjfx:javafx-swing:win:22.0.1 Maven: org.openjfx:javafx-web
+ :22.0.1 Maven: org.openjfx:javafx-web:win:22.0.1
+

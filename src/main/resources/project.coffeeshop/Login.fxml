@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.coffeeshop.LoginController">
+
+    <!-- Left Image Section -->
+    <AnchorPane prefHeight="600.0" prefWidth="400.0">
+        <ImageView fitHeight="600.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@Coffee.jpeg" />
+        </ImageView>
+    </AnchorPane>
+
+    <!-- Title -->
+    <Label layoutX="514.0" layoutY="113.0" text="Coffee Shop" textFill="#986b4b">
+        <font>
+            <Font name="Georgia" size="36.0" />
+        </font>
+    </Label>
+
+    <!-- Login Section -->
+    <Label layoutX="572.0" layoutY="197.0" prefHeight="35.0" prefWidth="75.0" text="Log in">
+        <font>
+            <Font name="System Bold" size="24.0" />
+        </font>
+    </Label>
+
+    <TextField fx:id="txtUsername" layoutX="498.0" layoutY="285.0" prefHeight="30.0" prefWidth="240.0" promptText="User Name" style="-fx-border-color: #986b4b;" />
+
+    <PasswordField fx:id="txtPassword" layoutX="498.0" layoutY="338.0" prefHeight="30.0" prefWidth="240.0" promptText="Password" style="-fx-border-color: #986b4b;" />
+
+    <!-- Login Button -->
+    <JFXButton fx:id="btnLogin" layoutX="498.0" layoutY="418.0" onAction="#login" prefHeight="30.0" prefWidth="240.0" style="-fx-background-color: #986b4b; -fx-font-size: 14px; -fx-font-weight: bold;" text="Log in" textFill="WHITE" />
+
+    <!-- Signup Section -->
+    <Label layoutX="513.0" layoutY="526.0" text="Don't have an account?" />
+
+    <JFXButton fx:id="btnSignup" layoutX="642.0" layoutY="522.0" onAction="#signup" text="Sign up">
+        <font>
+            <Font name="System Bold" size="13.0" />
+        </font>
+    </JFXButton>
+
+</AnchorPane>
